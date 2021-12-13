@@ -12,6 +12,4 @@ También cabe destacar que para las pruebas unitarias se utilizo la librería un
 STACK UTILIZADO: **Python, MongoDb y UnitTest**
 
 
-![alt text](muvinai.jpg)
-
 
