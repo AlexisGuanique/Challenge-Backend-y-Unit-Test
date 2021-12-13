@@ -13,6 +13,7 @@ coleccionPagos = None
 
 
 def crear_registros(coleccion_Planes, coleccion_Socios, coleccion_Descuentos):
+    #Insert una plan en la coleccion
     coleccion_Planes.insert_one({
             'nombre': 'oro',
             'precio': 2000
@@ -130,10 +131,12 @@ def crear_registros(coleccion_Planes, coleccion_Socios, coleccion_Descuentos):
             'estado': 'activo'
         }]
     
-    for socio in socios:
         # En un for agrego socio por socio, iterando cada uno de elos elementos de la lista
+    
+    for socio in socios:
         coleccion_Socios.insert_one(socio)
     
+    #Inserto un descuento en la coleccion
     coleccion_Descuentos.insert_one({
         'monto': 100,
         'es_absoluto': True,
@@ -148,7 +151,6 @@ def limpiar_db(coleccionPlanes, coleccionSocios, coleccionDescuentos, coleccionP
 
 
 
-# Consulta a la base de datos, y si ya existen registros, no la crea de nuevo
 def inicializar_db(es_real = True):
     if es_real:
         db = prueba['challenge-1']
@@ -161,11 +163,12 @@ def inicializar_db(es_real = True):
     coleccionDescuentos = db['descuentos']
     coleccionPagos = db['pagos']
 
-    # if es_real:
-
-    limpiar_db(coleccionSocios, coleccionPlanes, coleccionDescuentos, coleccionPagos)
+    if coleccionSocios.count_documents({}) > 4:
+        limpiar_db(coleccionSocios, coleccionPlanes, coleccionDescuentos, coleccionPagos)
     
+    limpiar_db(coleccionSocios, coleccionPlanes, coleccionDescuentos, coleccionPagos)
     crear_registros(coleccionPlanes, coleccionSocios, coleccionDescuentos)
+    
     
 
 inicializar_db(False)

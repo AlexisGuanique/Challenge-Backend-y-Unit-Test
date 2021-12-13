@@ -26,6 +26,7 @@ def obtener_socios():
 
 
 # Obtengo el plan del socio, desde la coleccion planes 
+# Esta funcion la utilizare en cancular_monto_a_pagar
 def obtener_plan(plan_id):
 
     plan = db.coleccionPlanes.find_one({'_id':plan_id})
@@ -134,7 +135,7 @@ def actualizar_fecha_expiracion(socio):
 def main():
     db.inicializar_db()
 
-    schedule.every(1).day.at("16:17").do(aplicar_cobros)
+    schedule.every(1).day.at("00:00").do(aplicar_cobros)
     aplicar_cobros()
     while True:
         schedule.run_pending() 
