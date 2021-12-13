@@ -1,5 +1,6 @@
+.gitignore
 __pycache__/
-.txt
-.pdf
+Planificacion.txt
+Challenge - backend & unit testing.pdf
 
 
