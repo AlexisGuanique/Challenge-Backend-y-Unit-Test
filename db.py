@@ -1,5 +1,7 @@
 from pymongo import MongoClient
 
+#CREACION DE LA BASE DE DATOS
+
 
 MONGO_URL = 'mongodb://localhost'
 prueba = MongoClient(MONGO_URL)
@@ -150,7 +152,7 @@ def limpiar_db(coleccionPlanes, coleccionSocios, coleccionDescuentos, coleccionP
     coleccionPagos.drop()
 
 
-
+# Se crea dos bases de datos diferentes, una para test y otra para la app, de esta manera se evita conflictos en db
 def inicializar_db(es_real = True):
     if es_real:
         db = prueba['challenge-1']
@@ -168,6 +170,7 @@ def inicializar_db(es_real = True):
     
     limpiar_db(coleccionSocios, coleccionPlanes, coleccionDescuentos, coleccionPagos)
     crear_registros(coleccionPlanes, coleccionSocios, coleccionDescuentos)
+    print('Base de datos Inicializada con Exito')
     
     
 

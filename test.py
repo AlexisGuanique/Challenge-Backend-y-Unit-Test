@@ -4,6 +4,7 @@ import db
 import main
 
 
+# TEST UNITARIOS
 
 class TestPagos(unittest.TestCase):
 
@@ -293,3 +294,4 @@ class TestPagos(unittest.TestCase):
 if __name__ == '__main__':
     db.inicializar_db(False)
     unittest.main()
+

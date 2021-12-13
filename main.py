@@ -135,12 +135,12 @@ def actualizar_fecha_expiracion(socio):
 def main():
     db.inicializar_db()
 
-    schedule.every(1).day.at("00:00").do(aplicar_cobros)
+    # De esta manera indicamos, gracias a schedule, cuando se va a ejecutar nuestra app, asi automatizamos los pagos
+    # schedule.every(1).day.at("00:00").do(aplicar_cobros)
     aplicar_cobros()
-    while True:
-        schedule.run_pending() 
-        sleep(1)
-
+    # while True:
+    #     schedule.run_pending() 
+    #     sleep(1)
 
 
 if __name__ == '__main__':
